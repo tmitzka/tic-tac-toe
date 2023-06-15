@@ -133,8 +133,5 @@ class Player:
     def choose_field_computer(self, indices_empty: list[int]) -> int:
         # Choose the center field if it's empty.
         # Otherwise, choose a random field.
-        if 4 in indices_empty:
-            index = 4
-        else:
-            index = choice(indices_empty)
+        index = 4 if 4 in indices_empty else choice(indices_empty)
         return index
