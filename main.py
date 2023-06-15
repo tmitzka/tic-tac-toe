@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """A text-based game of Tic Tac Toe."""
 
-from game_player import Game, Player
+from ttt_classes import Game, Player
 
 
 def main():
