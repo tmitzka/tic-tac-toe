@@ -52,26 +52,27 @@ class Game:
         return False
 
     def win_or_block(self) -> Optional[int]:
-        """Find an incomplete row and return the missing index."""
+        """Find an incomplete row and return the missing index.
+
+        First, search for the current player's mark.
+        Second, search for the opponent player's mark.
+        """
         for current_mark in (self.players[0].mark, self.players[1].mark):
-
-            # Check for horizontal row.
+            # Check horizontal rows.
             for row in (self.grid[0:3], self.grid[3:6], self.grid[6:9]):
-                if row.count(current_mark) == 2 and row.count(self.EMPTY_MARK) == 1:
+                if (row.count(current_mark) == 2 \
+                    and row.count(self.EMPTY_MARK) == 1):
                     return row.index(self.EMPTY_MARK)
-            # Check for vertical row.
+            # Check columns.
             for col in (self.grid[0:7:3], self.grid[1:8:3], self.grid[2:9:3]):
-                if col.count(current_mark) == 2 and col.count(self.EMPTY_MARK) == 1:
+                if (col.count(current_mark) == 2 \
+                    and col.count(self.EMPTY_MARK) == 1):
                     return col.index(self.EMPTY_MARK)
-            # Check for diagonal row.
-            if (self.grid[0] == self.grid[4] == self.grid[8] and \
-                self.grid[0] in self.PLAYER_MARKS):
-                # return index
-                pass
-            if self.grid[2] == self.grid[4] == self.grid[6] == current_mark:
-                # return index
-                pass
-
+            # Check diagonal rows.
+            for d_row in (self.grid[0:9:4], self.grid[2:7:2]):
+                if (d_row.count(current_mark) == 2 \
+                    and d_row.count(self.EMPTY_MARK) == 1):
+                    return d_row.index(self.EMPTY_MARK)
         return None
 
     def place_mark(self):
