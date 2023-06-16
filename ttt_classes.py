@@ -53,29 +53,26 @@ class Game:
 
     def win_or_block(self) -> Optional[int]:
         """Find an incomplete row and return the missing index."""
-        player_mark, opponent_mark = self.players[0].mark, self.players[1].mark
+        for current_mark in (self.players[0].mark, self.players[1].mark):
 
-        # Check for horizontal row.
-        for row in (self.grid[0:3], self.grid[3:6], self.grid[6:9]):
-            if row.count(current_mark) == 2 and row.count(self.EMPTY_MARK) == 1:
-                return row.index(self.EMPTY_MARK)
-        # Check for vertical row.
-        for col in (self.grid[0:7:3], self.grid[1:8:3], self.grid[2:9:3]):
-            if col.count(current_mark) == 2 and col.count(self.EMPTY_MARK) == 1:
-                return col.index(self.EMPTY_MARK)
-        # Check for diagonal row.
-        if (self.grid[0] == self.grid[4] == self.grid[8] and \
-            self.grid[0] in self.PLAYER_MARKS):
-            return True
-        if (self.grid[2] == self.grid[4] == self.grid[6] and \
-            self.grid[2] in self.PLAYER_MARKS):
-            return True
+            # Check for horizontal row.
+            for row in (self.grid[0:3], self.grid[3:6], self.grid[6:9]):
+                if row.count(current_mark) == 2 and row.count(self.EMPTY_MARK) == 1:
+                    return row.index(self.EMPTY_MARK)
+            # Check for vertical row.
+            for col in (self.grid[0:7:3], self.grid[1:8:3], self.grid[2:9:3]):
+                if col.count(current_mark) == 2 and col.count(self.EMPTY_MARK) == 1:
+                    return col.index(self.EMPTY_MARK)
+            # Check for diagonal row.
+            if (self.grid[0] == self.grid[4] == self.grid[8] and \
+                self.grid[0] in self.PLAYER_MARKS):
+                # return index
+                pass
+            if self.grid[2] == self.grid[4] == self.grid[6] == current_mark:
+                # return index
+                pass
 
-        index = -1
-        if False:
-            return index
-        else:
-            return None
+        return None
 
     def place_mark(self):
         """Place a player mark at the chosen field."""
