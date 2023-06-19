@@ -91,6 +91,7 @@ class Game:
             else:
                 index = self.players[0].choose_field_computer(indices_empty)
         self.grid[index] = self.players[0].mark
+        print(f"Field {index + 1} was marked with '{self.players[0].mark}'.")
 
     def switch_players(self):
         """Reverse order of player list."""
