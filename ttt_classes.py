@@ -82,7 +82,7 @@ class Game:
 
     def place_mark(self):
         """Place a player mark at the chosen field."""
-        indices_empty = [i for i in range(9) if self.grid[i] == "-"]
+        indices_empty = [i for i in range(9) if self.grid[i] == self.empty_mark]
 
         if self.players[0].is_human:
             index = self.players[0].choose_field_human(indices_empty)
