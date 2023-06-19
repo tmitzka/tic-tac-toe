@@ -116,8 +116,10 @@ class Player:
         return f"{self.name} ({self.mark}) has {self.points} points."
 
     def choose_field_human(self, indices_empty: list[int]) -> int:
-        # Human player chooses an empty field.
-        # Show field numbers instead of indices to human player.
+        """Let the human player choose an empty field.
+
+        Show field numbers (starting from 1) instead of indices.
+        """
         empty_field_numbers = [str(i + 1) for i in indices_empty]
         print("Where do you want to place your mark?")
         print(f"Empty fields: {empty_field_numbers}")
@@ -130,7 +132,9 @@ class Player:
         return index
 
     def choose_field_computer(self, indices_empty: list[int]) -> int:
-        # Choose the center field if it's empty.
-        # Otherwise, choose a random field.
+        """Choose an empty field for a computer player.
+
+        Choose either the center field or a random field.
+        """
         index = 4 if 4 in indices_empty else choice(indices_empty)
         return index
