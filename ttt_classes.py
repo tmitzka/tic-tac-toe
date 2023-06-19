@@ -119,7 +119,7 @@ class Player:
         self.points = 0
 
     def __repr__(self):
-        return f"{self.name} ({self.mark}) has {self.points} points."
+        return f"{self.name} ({self.mark}): {self.points} points"
 
     def choose_field_human(self, indices_empty: list[int]) -> int:
         """Let the human player choose an empty field.
