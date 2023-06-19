@@ -60,7 +60,8 @@ class Game:
         First, search for the current player's mark.
         Second, search for the opponent player's mark.
         """
-        for current_mark in (self.players[0].mark, self.players[1].mark):
+        for player in self.players:
+            current_mark = player.mark
             # Check horizontal rows.
             for row in (self.grid[0:3], self.grid[3:6], self.grid[6:9]):
                 if (row.count(current_mark) == 2 \
