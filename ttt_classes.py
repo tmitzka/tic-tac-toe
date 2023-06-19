@@ -3,21 +3,19 @@
 from random import choice
 from typing import Optional
 
+PLAYER_MARKS = "X", "O"
+EMPTY_MARK = "-"
+
 
 class Game:
     """A class representing a game of Tic Tac Toe."""
-
-    PLAYER_MARKS = ("X", "O")
-    EMPTY_MARK = "-"
 
     def __init__(self, players: list):
         """Initialize attributes."""
 
         self.players = players
-        self.player_marks = Game.PLAYER_MARKS
-        self.players[0].mark, self.players[1].mark = self.player_marks
-        self.empty_mark = Game.EMPTY_MARK
-        # self.grid = [self.empty_mark for _ in range(9)]
+        self.players[0].mark, self.players[1].mark = PLAYER_MARKS
+        # self.grid = [EMPTY_MARK for _ in range(9)]
         # Replace self.grid with list comprehension later.
         self.grid = [
             "-", "-", "-",
@@ -41,18 +39,18 @@ class Game:
         """Check whether there's a row of three marks."""
         # Check for horizontal row.
         for row in (self.grid[0:3], self.grid[3:6], self.grid[6:9]):
-            if row[0] == row[1] == row[2] and row[0] in self.player_marks:
+            if row[0] == row[1] == row[2] and row[0] in PLAYER_MARKS:
                 return True
         # Check for vertical row.
         for col in (self.grid[0:7:3], self.grid[1:8:3], self.grid[2:9:3]):
-            if col[0] == col[1] == col[2] and col[0] in self.player_marks:
+            if col[0] == col[1] == col[2] and col[0] in PLAYER_MARKS:
                 return True
         # Check for diagonal row.
         if (self.grid[0] == self.grid[4] == self.grid[8] and \
-            self.grid[0] in self.player_marks):
+            self.grid[0] in PLAYER_MARKS):
             return True
         if (self.grid[2] == self.grid[4] == self.grid[6] and \
-            self.grid[2] in self.player_marks):
+            self.grid[2] in PLAYER_MARKS):
             return True
         return False
 
@@ -66,23 +64,23 @@ class Game:
             # Check horizontal rows.
             for row in (self.grid[0:3], self.grid[3:6], self.grid[6:9]):
                 if (row.count(current_mark) == 2 \
-                    and row.count(self.empty_mark) == 1):
-                    return row.index(self.empty_mark)
+                    and row.count(EMPTY_MARK) == 1):
+                    return row.index(EMPTY_MARK)
             # Check columns.
             for col in (self.grid[0:7:3], self.grid[1:8:3], self.grid[2:9:3]):
                 if (col.count(current_mark) == 2 \
-                    and col.count(self.empty_mark) == 1):
-                    return col.index(self.empty_mark)
+                    and col.count(EMPTY_MARK) == 1):
+                    return col.index(EMPTY_MARK)
             # Check diagonal rows.
             for d_row in (self.grid[0:9:4], self.grid[2:7:2]):
                 if (d_row.count(current_mark) == 2 \
-                    and d_row.count(self.empty_mark) == 1):
-                    return d_row.index(self.empty_mark)
+                    and d_row.count(EMPTY_MARK) == 1):
+                    return d_row.index(EMPTY_MARK)
         return None
 
     def place_mark(self):
         """Place a player mark at the chosen field."""
-        indices_empty = [i for i in range(9) if self.grid[i] == self.empty_mark]
+        indices_empty = [i for i in range(9) if self.grid[i] == EMPTY_MARK]
 
         if self.players[0].is_human:
             index = self.players[0].choose_field_human(indices_empty)
