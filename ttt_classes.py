@@ -9,7 +9,7 @@ class Game:
 
     def __init__(self, players: list):
         """Initialize attributes."""
-        
+
         self.players = players
         self.PLAYER_MARKS = ("X", "O")
         self.players[0].mark, self.players[1].mark = self.PLAYER_MARKS
@@ -96,6 +96,7 @@ class Game:
 
     def play_again(self) -> bool:
         """Play again?"""
+        answer = input("Play again? (y/n) ")
         if answer == "y":
             return True
         else:
