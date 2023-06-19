@@ -9,8 +9,8 @@ def main():
 
     print("Welcome to Tic Tac Toe!")
     game = Game([
-        Player("Human", True),
-        Player("Computer", False),
+        Player(name="Human", is_human=True),
+        Player(name="Computer", is_human=False),
     ])
     # print(game)
     while True:
