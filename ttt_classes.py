@@ -18,6 +18,7 @@ class Game:
         self.players[0].mark, self.players[1].mark = self.player_marks
         self.empty_mark = Game.EMPTY_MARK
         # self.grid = [self.empty_mark for _ in range(9)]
+        # Replace self.grid with list comprehension later.
         self.grid = [
             "-", "-", "-",
             "X", "-", "X",
