@@ -28,12 +28,13 @@ class Game:
         return f"Tic Tac Toe: {self.players[0].name} vs {self.players[1].name}"
 
     def show_grid(self):
-        """Show the game grid in a user-friendly way."""
-        print()
-        print(" ".join(self.grid[0:3]))
-        print(" ".join(self.grid[3:6]))
-        print(" ".join(self.grid[6:9]))
-        print()
+        """Show game grid to human player."""
+        if self.players[0].is_human:
+            print()
+            print(" ".join(self.grid[0:3]))
+            print(" ".join(self.grid[3:6]))
+            print(" ".join(self.grid[6:9]))
+            print()
 
     def check_for_row(self) -> bool:
         """Check whether there's a row of three marks."""
