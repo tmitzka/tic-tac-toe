@@ -26,9 +26,6 @@ class Game:
         ]
         self.grid = list(zip(mark_characters, range(9)))  
 
-    def __repr__(self) -> str:
-        return f"Tic Tac Toe: {self.players[0].name} vs {self.players[1].name}"
-
     def show_grid(self):
         """Show game grid to human player."""
         if self.players[0].is_human:
@@ -120,7 +117,7 @@ class Player:
         self.mark = ""
         self.points = 0
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{self.name} ({self.mark}): {self.points} points"
 
     def choose_field_human(self, indices_empty: list[int]) -> int:
