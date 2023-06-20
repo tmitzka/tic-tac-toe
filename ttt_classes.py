@@ -15,13 +15,16 @@ class Game:
 
         self.players = players
         self.players[0].mark, self.players[1].mark = PLAYER_MARKS
-        # self.grid = [EMPTY_MARK for _ in range(9)]
-        # Replace self.grid with list comprehension later.
-        self.grid = [
+        # Grid list contains mark characters and index numbers,
+        # so that it's clear where marks should be placed.
+        # mark_characters = [EMPTY_MARK for _ in range(9)]
+        # --> Replace mark_characters with list comprehension later.
+        mark_characters = [
             "-", "-", "-",
             "X", "-", "X",
             "O", "-", "O",
         ]
+        self.grid = list(zip(mark_characters, range(9)))  
 
     def __repr__(self) -> str:
         return f"Tic Tac Toe: {self.players[0].name} vs {self.players[1].name}"
