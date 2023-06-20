@@ -17,14 +17,14 @@ class Game:
         self.players[0].mark, self.players[1].mark = PLAYER_MARKS
         # Grid list contains mark characters and index numbers,
         # so that it's clear where marks should be placed.
-        # mark_characters = [EMPTY_MARK for _ in range(9)]
-        # --> Replace mark_characters with list comprehension later.
-        mark_characters = [
+        # self.grid = [[EMPTY_MARK, i] for i in range(9)]
+        # --> Replace self.grid with list comprehension later.
+        example_marks = [
             "-", "-", "-",
             "X", "-", "X",
             "O", "-", "O",
         ]
-        self.grid = list(zip(mark_characters, range(9)))  
+        self.grid = [[example_marks[i], i] for i in range(9)]
 
     def show_grid(self):
         """Show game grid to human player."""
