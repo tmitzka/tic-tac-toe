@@ -35,7 +35,7 @@ class Game:
             print(" ".join(self.grid[6:9]))
             print()
 
-    def check_for_row(self) -> bool:
+    def three_in_a_row(self) -> bool:
         """Check whether there's a row of three marks."""
         # Check for horizontal row.
         for row in (self.grid[0:3], self.grid[3:6], self.grid[6:9]):

@@ -16,7 +16,7 @@ def main():
     while True:
         game.show_grid()
         game.place_mark()
-        if game.check_for_row():
+        if game.three_in_a_row():
             print(f"\n{game.players[0].name} won!")
             game.show_grid()
             break
