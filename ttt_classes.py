@@ -67,12 +67,12 @@ class Game:
                     empty_index = row_marks.index(EMPTY_MARK)
                     return indexed_row[empty_index][0]
             # Check columns.
-            for indexed_col in (indexed_grid[0:7:3], indexed_grid[1:8:3], indexed_grid[2:9:3]):
-                col_marks = [element[1] for element in indexed_col]
-                if (col_marks.count(current_mark) == 2 \
-                    and col_marks.count(EMPTY_MARK) == 1):
-                    empty_index = col_marks.index(EMPTY_MARK)
-                    return indexed_col[empty_index][0]
+            for indexed_column in (indexed_grid[0:7:3], indexed_grid[1:8:3], indexed_grid[2:9:3]):
+                column_marks = [element[1] for element in indexed_column]
+                if (column_marks.count(current_mark) == 2 \
+                    and column_marks.count(EMPTY_MARK) == 1):
+                    empty_index = column_marks.index(EMPTY_MARK)
+                    return indexed_column[empty_index][0]
             # Check diagonal rows.
             for indexed_diagonal in (indexed_grid[0:9:4], indexed_grid[2:7:2]):
                 diagonal_marks = [element[1] for element in indexed_diagonal]
