@@ -56,23 +56,30 @@ class Game:
         First, search for the current player's mark.
         Second, search for the opponent player's mark.
         """
+        indexed_grid = list(enumerate(self.grid))
         for player in self.players:
             current_mark = player.mark
             # Check horizontal rows.
-            for row in (self.grid[0:3], self.grid[3:6], self.grid[6:9]):
-                if (row.count(current_mark) == 2 \
-                    and row.count(EMPTY_MARK) == 1):
-                    return row.index(EMPTY_MARK)
+            for indexed_row in (indexed_grid[0:3], indexed_grid[3:6], indexed_grid[6:9]):
+                row_marks = [element[1] for element in indexed_row]
+                if (row_marks.count(current_mark) == 2 \
+                    and row_marks.count(EMPTY_MARK) == 1):
+                    empty_index = row_marks.index(EMPTY_MARK)
+                    return indexed_row[empty_index][0]
             # Check columns.
-            for col in (self.grid[0:7:3], self.grid[1:8:3], self.grid[2:9:3]):
-                if (col.count(current_mark) == 2 \
-                    and col.count(EMPTY_MARK) == 1):
-                    return col.index(EMPTY_MARK)
+            for indexed_col in (indexed_grid[0:7:3], indexed_grid[1:8:3], indexed_grid[2:9:3]):
+                col_marks = [element[1] for element in indexed_col]
+                if (col_marks.count(current_mark) == 2 \
+                    and col_marks.count(EMPTY_MARK) == 1):
+                    empty_index = col_marks.index(EMPTY_MARK)
+                    return indexed_col[empty_index][0]
             # Check diagonal rows.
-            for d_row in (self.grid[0:9:4], self.grid[2:7:2]):
-                if (d_row.count(current_mark) == 2 \
-                    and d_row.count(EMPTY_MARK) == 1):
-                    return d_row.index(EMPTY_MARK)
+            for indexed_diagonal in (indexed_grid[0:9:4], indexed_grid[2:7:2]):
+                diagonal_marks = [element[1] for element in indexed_diagonal]
+                if (diagonal_marks.count(current_mark) == 2 \
+                    and diagonal_marks.count(EMPTY_MARK) == 1):
+                    empty_index = diagonal_marks.index(EMPTY_MARK)
+                    return indexed_diagonal[empty_index][0]
         return None
 
     def place_mark(self):
