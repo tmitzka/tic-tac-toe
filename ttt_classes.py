@@ -55,19 +55,28 @@ class Game:
 
         First, search for the current player's mark.
         Second, search for the opponent player's mark.
+        Use an indexed list to keep track of the original row indices.
         """
         indexed_grid = list(enumerate(self.grid))
         for player in self.players:
             current_mark = player.mark
             # Check horizontal rows.
-            for indexed_row in (indexed_grid[0:3], indexed_grid[3:6], indexed_grid[6:9]):
+            for indexed_row in (
+                indexed_grid[0:3],
+                indexed_grid[3:6],
+                indexed_grid[6:9],
+            ):
                 row_marks = [element[1] for element in indexed_row]
                 if (row_marks.count(current_mark) == 2 \
                     and row_marks.count(EMPTY_MARK) == 1):
                     empty_index = row_marks.index(EMPTY_MARK)
                     return indexed_row[empty_index][0]
             # Check columns.
-            for indexed_column in (indexed_grid[0:7:3], indexed_grid[1:8:3], indexed_grid[2:9:3]):
+            for indexed_column in (
+                indexed_grid[0:7:3],
+                indexed_grid[1:8:3],
+                indexed_grid[2:9:3],
+            ):
                 column_marks = [element[1] for element in indexed_column]
                 if (column_marks.count(current_mark) == 2 \
                     and column_marks.count(EMPTY_MARK) == 1):
