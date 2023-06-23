@@ -91,20 +91,16 @@ class Game:
                     return indexed_diagonal[empty_index][0]
         return None
 
-    def place_mark(self):
-        """Place a player mark at the chosen field."""
-        indices_empty = [i for i in range(9) if self.grid[i] == EMPTY_MARK]
-
-        if self.players[0].is_human:
-            index = self.players[0].choose_field_human(indices_empty)
+    def place_mark(self, grid_index):
+        """Place the current player's mark at the chosen field."""
+        if self.grid[grid_index] == EMPTY_MARK:
+            self.grid[grid_index] = self.players[0].mark
+            print(
+                f"Field {grid_index + 1} was marked with "
+                f"'{self.players[0].mark}'."
+            )
         else:
-            win_block_index = self.win_or_block()
-            if win_block_index:
-                index = win_block_index
-            else:
-                index = self.players[0].choose_field_computer(indices_empty)
-        self.grid[index] = self.players[0].mark
-        print(f"Field {index + 1} was marked with '{self.players[0].mark}'.")
+            raise ValueError("The chosen field index is not empty")
 
     def switch_players(self):
         """Reverse order of player list."""
