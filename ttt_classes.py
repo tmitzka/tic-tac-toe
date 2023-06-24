@@ -108,10 +108,11 @@ class Game:
     def play_again(self) -> bool:
         """Play again?"""
         answer = input("Play again? (y/n) ")
-        if answer == "y":
-            return True
-        else:
-            return False
+        return True if answer.lower() == "y" else False
+
+    def start_new_game(self, players: list):
+        """Reset attributes for a new game."""
+        self.__init__(players)
 
 
 class Player:

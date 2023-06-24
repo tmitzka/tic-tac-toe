@@ -9,11 +9,12 @@ def main():
     """Main function that uses methods from modules."""
 
     print("Welcome to Tic Tac Toe!")
-    game = Game([
+    players = [
         Player(name="Human", is_human=True),
         Player(name="Computer", is_human=False),
-    ])
-    # print(game)
+    ]
+    game = Game(players)
+
     while True:
         player = game.players[0]
         indices_empty = game.get_indices_empty()
@@ -33,12 +34,17 @@ def main():
         sleep(2)
 
         if game.three_in_a_row():
-            print(f"\n{player.name} won!")
+            if player.is_human:
+                print("\nYou won!")
+            else:
+                print(f"\n{player.name} won!")
             game.show_grid()
-            break
+            if game.play_again():
+                game.start_new_game(players)
+            else:
+                break
 
         game.switch_players()
-
 
 
 if __name__ == "__main__":
