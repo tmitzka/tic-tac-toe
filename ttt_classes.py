@@ -23,13 +23,12 @@ class Game:
         self.grid = example_marks
 
     def show_grid(self):
-        """Show game grid to human player."""
-        if self.players[0].is_human:
-            print()
-            print(" ".join(self.grid[0:3]))
-            print(" ".join(self.grid[3:6]))
-            print(" ".join(self.grid[6:9]))
-            print()
+        """Show the current game grid."""
+        print()
+        print(" ".join(self.grid[0:3]))
+        print(" ".join(self.grid[3:6]))
+        print(" ".join(self.grid[6:9]))
+        print()
 
     def get_indices_empty(self) -> list[int]:
         """Get indices of all empty fields for players to choose from."""
