@@ -15,12 +15,7 @@ class Game:
 
         self.players = players
         self.players[0].mark, self.players[1].mark = PLAYER_MARKS
-        example_marks = [
-            "-", "-", "-",
-            "X", "-", "X",
-            "O", "-", "O",
-        ]
-        self.grid = example_marks
+        self.grid = [EMPTY_MARK for _ in range(9)]
 
     def show_grid(self):
         """Show the current game grid."""
