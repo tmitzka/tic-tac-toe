@@ -32,6 +32,7 @@ class Game:
     def three_in_a_row(self) -> bool:
         """Check whether there's a row of three marks."""
         # Check for horizontal row.
+
         for row in (self.grid[0:3], self.grid[3:6], self.grid[6:9]):
             if row[0] == row[1] == row[2] and row[0] in PLAYER_MARKS:
                 return True
@@ -98,7 +99,7 @@ class Game:
                 f"'{self.players[0].mark}'."
             )
         else:
-            raise ValueError("The chosen field index is not empty")
+            raise ValueError("The chosen field is not empty")
 
     def switch_players(self):
         """Reverse order of player list."""
@@ -110,9 +111,12 @@ class Game:
         answer = input("Play again? (y/n) ")
         return True if answer.lower() == "y" else False
 
-    def start_new_game(self, players: list):
+    def start_new_game(self):
         """Reset attributes for a new game."""
-        self.__init__(players)
+        self.grid = [EMPTY_MARK for _ in range(9)]
+        if not self.players[0].is_human:
+            self.players.reverse()
+        print("A new game is about to start.")
 
 
 class Player:
