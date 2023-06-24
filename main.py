@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """A text-based game of Tic Tac Toe."""
 
+from time import sleep
 from ttt_classes import Game, Player
 
 
@@ -14,22 +15,28 @@ def main():
     ])
     # print(game)
     while True:
-        current_player = game.players[0]
+        player = game.players[0]
         indices_empty = game.get_indices_empty()
-        if current_player.is_human:
+
+        if player.is_human:
             game.show_grid()
-            chosen_index = current_player.choose_field_human(indices_empty)
+            sleep(2)
+            chosen_index = player.choose_field_human(indices_empty)
         else:
             index_win_block = game.win_or_block()
             if index_win_block:
                 chosen_index = index_win_block
             else:
-                chosen_index = current_player.choose_field_computer(indices_empty)
+                chosen_index = player.choose_field_computer(indices_empty)
+        sleep(2)
         game.place_mark(chosen_index)
+        sleep(2)
+
         if game.three_in_a_row():
-            print(f"\n{current_player.name} won!")
+            print(f"\n{player.name} won!")
             game.show_grid()
             break
+
         game.switch_players()
 
 
