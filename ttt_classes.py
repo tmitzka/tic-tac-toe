@@ -31,6 +31,10 @@ class Game:
             print(" ".join(self.grid[6:9]))
             print()
 
+    def get_indices_empty(self) -> list[int]:
+        """Get indices of all empty fields for players to choose from."""
+        return [i for i in range(9) if self.grid[i] == EMPTY_MARK]
+
     def three_in_a_row(self) -> bool:
         """Check whether there's a row of three marks."""
         # Check for horizontal row.
