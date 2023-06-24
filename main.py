@@ -41,21 +41,24 @@ def main():
         if game.three_in_a_row() or final_turn:
             if game.three_in_a_row():
                 if player.is_human:
-                    print(f"\n{player.name}, you won!")
+                    print(f"\n* {player.name}, you won! *")
                 else:
-                    print(f"\n{player.name} won!")
+                    print(f"\n* {player.name} won! *")
             else:
-                print("\nIt's a draw!")
+                print("\n* It's a draw! *")
             game.show_grid()
 
             # Let the user decide whether to start a new game.
             if game.play_again():
                 game.start_new_game()
+                # Change flag variable so that player order won't
+                # get reversed at the end of this iteration.
                 new_game = True
             else:
                 break
 
         if not new_game:
+            # Reverse order of players for the next iteration.
             game.switch_players()
 
 
