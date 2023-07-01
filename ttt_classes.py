@@ -41,11 +41,15 @@ class Game:
             if col[0] == col[1] == col[2] and col[0] in PLAYER_MARKS:
                 return True
         # Check for diagonal row.
-        if (self.grid[0] == self.grid[4] == self.grid[8] and \
-            self.grid[0] in PLAYER_MARKS):
+        if (
+            self.grid[0] == self.grid[4] == self.grid[8]
+            and self.grid[0] in PLAYER_MARKS
+        ):
             return True
-        if (self.grid[2] == self.grid[4] == self.grid[6] and \
-            self.grid[2] in PLAYER_MARKS):
+        if (
+            self.grid[2] == self.grid[4] == self.grid[6]
+            and self.grid[2] in PLAYER_MARKS
+        ):
             return True
         return False
 
@@ -66,8 +70,10 @@ class Game:
                 indexed_grid[6:9],
             ):
                 row_marks = [element[1] for element in indexed_row]
-                if (row_marks.count(current_mark) == 2 \
-                    and row_marks.count(EMPTY_MARK) == 1):
+                if (
+                    row_marks.count(current_mark) == 2
+                    and row_marks.count(EMPTY_MARK) == 1
+                ):
                     empty_index = row_marks.index(EMPTY_MARK)
                     return indexed_row[empty_index][0]
             # Check columns.
@@ -77,15 +83,19 @@ class Game:
                 indexed_grid[2:9:3],
             ):
                 column_marks = [element[1] for element in indexed_column]
-                if (column_marks.count(current_mark) == 2 \
-                    and column_marks.count(EMPTY_MARK) == 1):
+                if (
+                    column_marks.count(current_mark) == 2
+                    and column_marks.count(EMPTY_MARK) == 1
+                ):
                     empty_index = column_marks.index(EMPTY_MARK)
                     return indexed_column[empty_index][0]
             # Check diagonal rows.
             for indexed_diagonal in (indexed_grid[0:9:4], indexed_grid[2:7:2]):
                 diagonal_marks = [element[1] for element in indexed_diagonal]
-                if (diagonal_marks.count(current_mark) == 2 \
-                    and diagonal_marks.count(EMPTY_MARK) == 1):
+                if (
+                    diagonal_marks.count(current_mark) == 2
+                    and diagonal_marks.count(EMPTY_MARK) == 1
+                ):
                     empty_index = diagonal_marks.index(EMPTY_MARK)
                     return indexed_diagonal[empty_index][0]
         return None
@@ -94,10 +104,7 @@ class Game:
         """Place the current player's mark at the chosen field."""
         if self.grid[grid_index] == EMPTY_MARK:
             self.grid[grid_index] = self.players[0].mark
-            print(
-                f"Field {grid_index + 1} was marked with "
-                f"'{self.players[0].mark}'."
-            )
+            print(f"Field {grid_index + 1} was marked with {self.players[0].mark}.")
         else:
             raise ValueError("The chosen field is not empty")
 

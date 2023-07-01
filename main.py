@@ -10,10 +10,12 @@ def main():
 
     print("Welcome to Tic Tac Toe!")
 
-    game = Game([
-        Player(name="Human", is_human=True),
-        Player(name="Computer", is_human=False),
-    ])
+    game = Game(
+        [
+            Player(name="Human", is_human=True),
+            Player(name="Computer", is_human=False),
+        ]
+    )
 
     while True:
         player = game.players[0]
