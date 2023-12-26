@@ -2,4 +2,4 @@
 A text-based game of Tic Tac Toe, played against the computer.
 
 ## Requirements
-Python 3.6+
+Python 3.10+

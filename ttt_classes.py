@@ -1,7 +1,6 @@
 """Classes for a game of Tic Tac Toe."""
 
 from random import choice
-from typing import Optional
 
 PLAYER_MARKS = "X", "O"
 EMPTY_MARK = "-"
@@ -32,7 +31,6 @@ class Game:
     def three_in_a_row(self) -> bool:
         """Check whether there's a row of three marks."""
         # Check for horizontal row.
-
         for row in (self.grid[0:3], self.grid[3:6], self.grid[6:9]):
             if row[0] == row[1] == row[2] and row[0] in PLAYER_MARKS:
                 return True
@@ -53,7 +51,7 @@ class Game:
             return True
         return False
 
-    def win_or_block(self) -> Optional[int]:
+    def win_or_block(self) -> int | None:
         """Find an incomplete row and return the missing index.
 
         First, search for the current player's mark.
