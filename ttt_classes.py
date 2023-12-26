@@ -111,7 +111,8 @@ class Game:
         self.players.reverse()
         print(f"\nNow it's your turn, {self.players[0].name}!")
 
-    def play_again(self) -> bool:
+    @staticmethod
+    def play_again() -> bool:
         """Play again?"""
         answer = input("Play again? (y/n) ")
         return True if answer.lower() == "y" else False
@@ -135,7 +136,8 @@ class Player:
     def __repr__(self) -> str:
         return f"{self.name} ({self.mark})"
 
-    def choose_field_human(self, indices_empty: list[int]) -> int:
+    @staticmethod
+    def choose_field_human(indices_empty: list[int]) -> int:
         """Let the human player choose an empty field.
 
         Show field numbers (starting from 1) instead of indices.
@@ -151,7 +153,8 @@ class Player:
         index = int(field_number) - 1
         return index
 
-    def choose_field_computer(self, indices_empty: list[int]) -> int:
+    @staticmethod
+    def choose_field_computer(indices_empty: list[int]) -> int:
         """Choose an empty field for a computer player.
 
         Choose either the center field or a random field.
