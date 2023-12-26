@@ -115,7 +115,7 @@ class Game:
     def play_again() -> bool:
         """Play again?"""
         answer = input("Play again? (y/n) ")
-        return True if answer.lower() == "y" else False
+        return answer.lower() == "y"
 
     def start_new_game(self):
         """Reset attributes for a new game."""
