@@ -20,7 +20,6 @@ def main():
     while True:
         player = game.players[0]
         indices_empty = game.get_indices_empty()
-        final_turn = True if len(indices_empty) == 1 else False
         new_game = False
 
         if player.is_human:
@@ -40,7 +39,7 @@ def main():
         sleep(2)
 
         # Declare a winner or a draw.
-        if game.three_in_a_row() or final_turn:
+        if game.three_in_a_row() or len(indices_empty) == 1:
             if game.three_in_a_row():
                 if player.is_human:
                     print(f"\n* {player.name}, you win! *")
